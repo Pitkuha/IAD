@@ -20,11 +20,11 @@ public class CreateData {
     @PostConstruct
     public void addInTables(){
         if (textRepository.findAll().isEmpty()){
-            textRepository.save(new Text("Хуй1"));
-            textRepository.save(new Text("Хуй2"));
-            textRepository.save(new Text("Хуй3"));
-            textRepository.save(new Text("Хуй4"));
-            textRepository.save(new Text("Хуй5"));
+            textRepository.save(new Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dictum lectus sapien. Nam aliquet tincidunt venenatis. Nam a hendrerit purus, sit amet suscipit dui."));
+            textRepository.save(new Text("Sed dignissim ornare diam ut rutrum. Nunc lacinia imperdiet risus. Nullam at arcu nunc. Sed hendrerit ut risus maximus fermentum."));
+            textRepository.save(new Text("Ut rhoncus turpis vitae est tempus rhoncus. Curabitur libero dolor, mattis nec arcu nec, fermentum tristique turpis. Etiam faucibus commodo est, id tincidunt orci mollis vitae."));
+            textRepository.save(new Text("Aliquam nec vestibulum lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus eu consequat purus."));
+            textRepository.save(new Text("Etiam tincidunt aliquam volutpat. Nunc pellentesque nulla a magna interdum posuere. Cras consequat ac nisl laoreet fermentum. Aenean iaculis, nunc vel malesuada congue, diam purus finibus ex, hendrerit vestibulum velit enim elementum arcu."));
         }
     }
 }

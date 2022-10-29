@@ -1,6 +1,8 @@
 package app.domain;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -13,15 +15,19 @@ public class Markup implements Serializable {
     private Date date;
     private String markup;
 
+    //Метрики
+    private Float rouge = null;
+
 
     public Markup() {
     }
 
-    public Markup(MarkupId markupId, String ip, Date date, String markup) {
+    public Markup(MarkupId markupId, String ip, Date date, String markup, Float rouge) {
         this.markupId = markupId;
         this.ip = ip;
         this.date = date;
         this.markup = markup;
+        this.rouge = rouge;
     }
 
     public MarkupId getMarkupId() {
@@ -54,6 +60,14 @@ public class Markup implements Serializable {
 
     public void setMarkup(String markup) {
         this.markup = markup;
+    }
+
+    public float getRouge() {
+        return rouge;
+    }
+
+    public void setRouge(float rouge) {
+        this.rouge = rouge;
     }
 }
 

@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.DTO.GetResponse;
+import app.DTO.PostResponse;
 import app.service.JWTService;
 import app.service.ResponseService;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +12,9 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 
+@CrossOrigin(origins = "http://localhost:5000", allowCredentials = "true")
 @RestController
-@RequestMapping("/**")
+//@RequestMapping("/api")
 public class Controller {
 
     private final JWTService jwtService = new JWTService();
@@ -23,19 +25,21 @@ public class Controller {
         this.responseService = responseService;
     }
 
+
     @GetMapping("/check")
-    public String showStatus(){
+    public String showStatus() {
         return "Success";
     }
 
     @GetMapping("/markup/next")
-    public GetResponse getNext(HttpSession session, HttpServletRequest request){
+    public GetResponse getNext(HttpSession session, HttpServletRequest request) {
         String sessionId = session.getId();
         return responseService.getText(sessionId, request);
     }
 
-    @PostMapping(value = "/markup/{key}")
-    public String record(@PathVariable long key) {
-        return "Здарова заебал номер + " + key;
+    @PostMapping(value = "/markup/{key}", produces = "application/json")
+    public PostResponse record(@PathVariable String key, @RequestBody String markup, HttpSession session, HttpServletRequest request) {
+        PostResponse postResponse = responseService.postText(session.getId(), request, markup, key);
+        return postResponse;
     }
 }
